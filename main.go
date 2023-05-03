@@ -184,6 +184,7 @@ func longToShort(longUrl string, ttl int) string {
 	// 重试三次
 	var shortKey string
 	for i := 0; i < 3; i++ {
+		// 设置短链接后缀长度，改 7 位为 3 位
 		shortKey = generate(3)
 
 		_existsLongUrl, _ := redis.String(redisClient.Do("get", shortKey))
